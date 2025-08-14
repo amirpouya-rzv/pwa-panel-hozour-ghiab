@@ -1,0 +1,78 @@
+{
+  "name": "HozorGhiyab",
+  "short_name": "hozorghiyab_PWA",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#003049",
+  "description": "اپلیکیشن حضور و غیاب کارمندان",
+  "scope": "/",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/images/icons/72 x 72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/96 x 96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/128 x 128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/144 x 144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/152 x 152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/192 x 192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/384 x 384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icons/512 x 512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+{
+  "src": "/images/icons/maskable_icon_x512.png",
+  "sizes": "512x512",
+  "type": "image/png",
+  "purpose": "maskable"
+}
+
+  ],
+"screenshots": [
+  {
+    "src": "/images/screenshots/screen 1.png",
+    "sizes": "800x800",
+    "type": "image/jpeg",
+    "form_factor": "wide"
+  },
+  {
+    "src": "/images/screenshots/screen 2.png",
+    "sizes": "360x640",
+    "type": "image/jpeg"
+  }
+]
+
+}
