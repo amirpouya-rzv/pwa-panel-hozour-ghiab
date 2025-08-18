@@ -26,11 +26,11 @@ const Reports = () => {
   const getBackGroundColor = (admin_code) => {
     switch (admin_code) {
       case -1:
-        return 'bg-[#FFD7D7]';   // کمتر از حد انتظار
+        return 'bg-lightred/80 text-white';   // کمتر از حد انتظار
       case 2:
-        return 'bg-[#C8FFCC]'; // عالی
+        return 'bg-toblue/80 text-white'; // عالی
       case 1:
-        return 'bg-[#FFFBB1]'; // متوسط
+        return 'bg-[#FDF0D5]'; // متوسط
       case 0:
         return 'bg-white';  
       default:
@@ -114,7 +114,7 @@ const Reports = () => {
     'flex-1 min-w-0 text-center py-2 dark:border dark:border-darkgray text-blue dark:text-white px-2 bg-[#dcdcdc] dark:bg-darkgray rounded-md font-bold text-[14px]';
 
   return (
-    <div className="relative dark:bg-dark_kightgray p-4 md:mt-10 mt-5 md:-mx-4 w-full mb-5 bg-white rounded-xl shadow-xl min-h-screen">
+    <div className="relative p-5 md:-mx-4 bg-white border-4 shadow-lg dark:bg-dark_kightgray md:mt-10 mt-5  w-full mb-5  rounded-xl  min-h-screen">
       <div className="flex justify-end">
         <SelcetMenu selectFiter={serParams} />
       </div>

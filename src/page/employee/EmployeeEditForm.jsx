@@ -66,13 +66,13 @@ function EmployeeEditForm({ formData, setFormData, selectedCard, handleSubmit, o
           <img
           src={formData?.photo}
           alt="employee"
-          className="w-[150px] h-[150px] rounded-full object-cover border-2 border-blue dark:border-black"
+          className="w-[200px] h-[200px] mb-10 rounded-full object-cover border-2 border-blue dark:border-black"
           />
           :
           <FaUserCircle size={200} />
         }
         
-        <div className="flex w-auto dark:border-lightgray px-5 flex-col items-center border-2 h-60 border-blue rounded-lg mt-4">
+        <div className="flex w-auto dark:border-lightgray px-20 flex-col items-center border-2 h-60 border-blue rounded-bl-3xl rounded-tr-3xl mt-4">
           <p className="text-xl mt-4 ">شناسه یکتا:</p>
           <p className="mt-12 text-2xl">{selectedCard?.decoded_device_id}</p>
         </div>
@@ -95,7 +95,7 @@ function EmployeeEditForm({ formData, setFormData, selectedCard, handleSubmit, o
         <span className="-mb-2 text-xl dark:text-lightgray">شعبه:</span>
         <CustomSelect
           options={branches}
-          value={activeBranches || []}  // مقدار باید آرایه باشد
+          value={activeBranches || []}  
           onChange={(val) => setFormData({ ...formData, branch: val })}
         />
 
@@ -103,14 +103,14 @@ function EmployeeEditForm({ formData, setFormData, selectedCard, handleSubmit, o
         <div className="flex justify-center gap-5">
           <button
             type="submit"
-            className="border-4 text-lg text-[#464746] border-[#1BBF26] py-2 px-20 rounded-md dark:border dark:border-darkgray dark:text-darkgray dark:bg-lightgray"
+            className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-10 py-2.5 text-center me-2 mb-2"
           >
             ثبت
           </button>
           <button
             type="button"
             onClick={onCancel}
-            className="border-4 text-lg text-[#464746] border-[#B20909] py-2 px-20 rounded-md dark:border dark:bg-darkgray dark:text-white dark:border-white "
+            className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-10 py-2.5 text-center me-2 mb-2"
           >
             لغو
           </button>

@@ -20,7 +20,7 @@ function AppInput({
             {title && (
                 <label
                     htmlFor={id}
-                    className={`text-gray-700 dark:text-lightgray  font-medium text-lg ${horizontal ? 'whitespace-nowrap min-w-24 text-right' : 'mb-1'}`}
+                    className={`text-gray-700 dark:text-lightgray font-medium text-lg ${horizontal ? 'whitespace-nowrap min-w-2 text-right' : 'mb-1'}`}
                 >
                     {title}
                 </label>

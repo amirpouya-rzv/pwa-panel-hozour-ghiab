@@ -39,17 +39,17 @@ const DashboardStats = () => {
   return (
     <div className="flex gap-4 justify-end">
       <StatCard
-        icon={<FaStore className="text-green-600" />}
+        icon={<FaStore className="text-toblue" />}
         label="تعداد شعبه ها"
         value={branches}
-        borderColor="#00cc33"
+        borderColor="#669bbc"
         borderPosition="right"
       />
       <StatCard
-        icon={<FaUsers className="text-orange-500" />}
+        icon={<FaUsers className="text-lightred" />}
         label="تعداد کارمندان"
         value={employees}
-        borderColor="#ff6600"
+        borderColor="#c1121f"
         borderPosition="left"
       />
     </div>

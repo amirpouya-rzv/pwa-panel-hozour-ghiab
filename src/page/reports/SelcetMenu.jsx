@@ -6,6 +6,7 @@ import FilterBranch from './filters/FilterBranch';
 import FilterTime from './filters/FilterTime';
 import { getTodayJalali } from '../../utils/dateutils';
 import { from } from 'jalali-moment';
+import ToggleButton from '../../components/shared/ToggleButton';
 
 
 const SelcetMenu = ({selectFiter}) => {
@@ -42,19 +43,20 @@ const SelcetMenu = ({selectFiter}) => {
     selectFiter(item)
   },[date,time,branch])
   return (
-    <div className='flex w-full flex-col md:flex-row gap-3 md:gap-9 items-center justify-between p-4 border-b-2 border-blue dark:border-darkgray mb-100 text-[12px]'>
+    <div className='flex w-full flex-col md:flex-row gap-3 md:gap-9 items-center justify-between p-4 border-b-2 border-toblue dark:border-darkgray mb-100 text-[12px]'>
       <span className='flex items-center dark:text-darkgray gap-2 text-blue'>
-        <IoStatsChartSharp size={50} />
-        <p className='text-[32px] dark:text-darkgray'>گزارشات</p>
+        <IoStatsChartSharp size={28} />
+        <p className='text-[25px] dark:text-darkgray'>گزارشات</p>
       </span>
 
       <FilterDate selectDate={setDate} />
       <FilterBranch selectBranch={setBranch} />
       <FilterTime selectTime={setTime} />
 
-      <span className='flex items-center dark:text-darkgray gap-2 text-blue'>
+      <span className='flex items-center dark:text-darkgray gap-2'>
         <MdOutlineCalendarMonth />
         {getTodayJalali()}
+        <ToggleButton/>
       </span>
     </div>
   );

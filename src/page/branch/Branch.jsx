@@ -84,17 +84,16 @@ function Branch() {
     };
 
     return (
-        <div className="w-full md:px-5 mb-52 pt-4">
-            <div className="w-full h-full dark:border dark:border-lightgray mb-10 dark:bg-lightgray bg-[#F3EFEF] rounded-3xl">
+        <div className="w-full  md:px-5 mb-52 md:mb-0 pt-10 shadow-xl">
+            <div className="w-full  dark:border dark:border-lightgray mb-10 dark:bg-lightgray border-4 rounded-3xl">
                 <HeadersBranch />
 
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white dark:border dark:border-lightgray dark:text-black dark:bg-darkgray pt-20 rounded-3xl space-y-8 md:w-[600px] w-[90%] mx-auto my-10 shadow-lg p-8 flex flex-col items-center gap-6 text-right"
+                    className="bg-white dark:border dark:border-lightgray dark:text-black dark:bg-darkgray rounded-3xl space-y-8 md:w-[600px] w-[90%] mx-auto p-8 flex flex-col items-center gap-6 text-right"
                 >
                     <div className="w-full">
                         <AppInput
-                            horizontal
                             title="نام شرکت :"
                             placeholder="نام شرکت را وارد کنید"
                             value={companyName}
@@ -104,7 +103,6 @@ function Branch() {
 
                     <div className="w-full">
                         <AppInput
-                            horizontal
                             title="آدرس شرکت :"
                             placeholder="آدرس را اینجا وارد کنید..."
                             value={companyAdress}
@@ -113,7 +111,7 @@ function Branch() {
                     </div>
 
                     <div className="w-full">
-                        <label className="block mb-2 text-gray-700 dark:text-white text-lg">
+                        <label className="block mb-2 text-lg text-gray-700 dark:text-white">
                             انتخاب موقعیت مکانی :
                         </label>
                         <button
@@ -153,8 +151,7 @@ function Branch() {
                     <div className="w-full">
                         <button
                             type="submit"
-                            className="relative md:px-36 px-20 py-2 rounded-xl border-4 dark:border-lightgray dark:bg-lightgray
-                            text-xl border-green-500 md:mx-52 mx-24"
+                            className="text-white mx-36 md:mx-80 bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-16 py-2.5 text-center me-2 mb-2"
                         >
                             ثبت
                         </button>

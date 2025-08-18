@@ -21,93 +21,98 @@ function AddEmployeeForm({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="md:w-full dark:bg-darkgray pt-36 dark:text-black bg-white shadow p-6 rounded-lg flex flex-col md:flex-row gap-6 overflow-y-auto max-h-[90vh]"
-    >
-      {/* فرم اطلاعات */}
-      <div className="flex flex-col gap-5 w-full order-2 md:order-1">
-        <AppInput
-          title={"نام :"}
-          horizontal
-          value={formData.first_name}
-          onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
-        />
-        <AppInput
-          title={"نام خانوادگی :"}
-          horizontal
-          value={formData.last_name}
-          onChange={(e) => setFormData({ ...formData, last_name: e.target.value })}
-        />
+   <form
+  onSubmit={handleSubmit}
+  className="md:w-full grid grid-cols-1 md:grid-cols-2 dark:bg-darkgray pt-36 dark:text-black bg-white shadow p-6 rounded-lg gap-6 overflow-y-auto max-h-[90vh]"
+>
+  {/* نام */}
+  <AppInput
+    title={"نام :"}
+    value={formData.first_name}
+    onChange={(e) => setFormData({ ...formData, first_name: e.target.value })}
+  />
 
-        <span className="-mb-2 text-xl dark:text-lightgray">شعبه (می‌توانید چند شعبه انتخاب کنید):</span>
-        <CustomSelect
-          options={branches}
-          value={Array.isArray(formData.branch_name) ? formData.branch_name : []}
-          onChange={(selectedBranches) => 
-            setFormData({ ...formData, branch_name: selectedBranches })
-          }
-        />
+  {/* نام خانوادگی */}
+  <AppInput
+    title={"نام خانوادگی :"}
+    value={formData.last_name}
+    onChange={(e) => setFormData({ ...formData, last_name: e.target.value })}
+  />
 
-        {/* نمایش شعبه‌های انتخاب شده */}
-        {formData.branch_name && formData.branch_name.length > 0 && (
-          <div className="bg-blue-50 dark:bg-darkgray p-3 rounded-lg">
-            <p className="text-sm font-semibold mb-2 dark:text-lightgray">شعبه‌های انتخاب شده:</p>
-            <div className="flex flex-wrap gap-2">
-              {formData.branch_name.map((branchName, index) => {
-                const branchLabel = branches.find(b => b.value === branchName)?.label || branchName;
-                return (
-                  <span
-                    key={index}
-                    className="bg-blue-100 dark:bg-lightgray text-blue-800 dark:text-darkgray px-2 py-1 rounded-full text-sm"
-                  >
-                    {branchLabel}
-                  </span>
-                );
-              })}
-            </div>
-          </div>
-        )}
+  {/* شعبه */}
+  <div className="flex flex-col">
+    <span className="mb-2 text-xl text-gray-700 dark:text-white">
+      شعبه (می‌توانید چند شعبه انتخاب کنید):
+    </span>
+    <CustomSelect
+      options={branches}
+      value={Array.isArray(formData.branch_name) ? formData.branch_name : []}
+      onChange={(selectedBranches) =>
+        setFormData({ ...formData, branch_name: selectedBranches })
+      }
+    />
 
-        {/* شناسه یکتا */}
-        <div className="w-full flex flex-col">
-          <span className="text-center flex rounded-t-lg justify-center items-center text-white font-xl h-10 w-full bg-blue dark:bg-to_dark_background">
-            شناسه یکتا :
-          </span>
-          <textarea
-            className="border-2 border-blue dark:border-lightgray h-52 rounded-b-lg focus:ring-0 focus:outline-none focus:ring-blue"
-            value={formData.device_id || ""}
-            onChange={(e) => setFormData({ ...formData, device_id: e.target.value })}
-          />
-        </div>
-
-        {/* اگر میخوای قابلیت آپلود عکس رو فعال کنی میتونی این بخش رو باز کنی */}
-        {/* <AppFileInput
-          title={"افزودن تصویر :"}
-          horizontal
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) {
-              if (selectedImage) URL.revokeObjectURL(selectedImage);
-              const imgURL = URL.createObjectURL(file);
-              setSelectedImage(imgURL);
-            }
-          }}
-        /> */}
-
-        <div className="flex justify-center md:flex mb-44 md:gap-4">
-          <button
-            type="submit"
-            className="border-4 dark:border-dark_kightgray dark:bg-lightgray dark:text-darkgray text-lg py-2 px-28 md:py-2 md:px-36 md:mx-80 rounded-md border-[#1BBF26]"
+    {/* نمایش شعبه‌های انتخاب شده */}
+   {formData.branch_name && formData.branch_name.length > 0 && (
+  <div className="bg-blue-50 dark:bg-darkgray p-3 rounded-lg mt-3">
+    <p className="text-sm font-semibold mb-2 dark:text-white">
+      شعبه‌های انتخاب شده:
+    </p>
+    <div className="flex flex-wrap gap-2">
+      {formData.branch_name.map((branchName, index) => {
+        const branchLabel =
+          branches.find((b) => b.value === branchName)?.label || branchName;
+        return (
+          <div
+            key={index}
+            className="flex items-center bg-toblue text-white gap-2 dark:bg-lightgray text-blue-800 dark:text-white px-3 py-1 rounded-full text-sm shadow-sm hover:scale-105 transition-transform duration-200 cursor-pointer"
           >
-            ثبت
-            {formData.branch_name && formData.branch_name.length > 1 && 
-              ` (${formData.branch_name.length} شعبه)`
-            }
-          </button>
-        </div>
-      </div>
-    </form>
+            <span className="truncate max-w-[120px]">{branchLabel}</span>
+            <button
+              type="button"
+              className="text-xl text-lightred hover:text-darkred"
+              onClick={() => {
+                setFormData({
+                  ...formData,
+                  branch_name: formData.branch_name.filter((_, i) => i !== index)
+                });
+              }}
+            >
+              ×
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+)}
+
+  </div>
+
+  {/* شناسه یکتا */}
+  <div className="flex flex-col">
+    <span className="mb-3 text-xl text-gray-700">
+      شناسه یکتا :
+    </span>
+    <textarea
+      className="border-2 border-blue dark:border-lightgray  rounded-xl focus:ring-0 focus:outline-none focus:ring-blue"
+      value={formData.device_id || ""}
+      onChange={(e) => setFormData({ ...formData, device_id: e.target.value })}
+    />
+  </div>
+
+  {/* دکمه (کل عرض) */}
+  <div className="col-span-1 md:col-span-2 flex justify-center mt-10">
+    <button
+      type="submit"
+      className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-16 py-2.5 text-center me-2 mb-2"
+    >
+      ثبت
+  
+    </button>
+  </div>
+</form>
+
   );
 }
 

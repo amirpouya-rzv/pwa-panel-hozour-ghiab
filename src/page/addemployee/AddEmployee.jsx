@@ -9,6 +9,7 @@ import AddEmployeeForm from "./AddEmployeeForm";
 import { getTodayJalali } from "../../utils/dateutils";
 import { getBranches } from "../../services/branchService";
 import { createWorkerBranch } from "../../services/workerbranch";
+import ToggleButton from "../../components/shared/ToggleButton";
 
 function AddEmployee() {
   const [cards, setCards] = useState([]);
@@ -73,10 +74,10 @@ function AddEmployee() {
       setFormData({
         first_name: selectedCard.first_name || "",
         last_name: selectedCard.last_name || "",
-        branch_name: Array.isArray(selectedCard.branch_name) 
-          ? selectedCard.branch_name 
-          : selectedCard.branch_name 
-            ? [selectedCard.branch_name] 
+        branch_name: Array.isArray(selectedCard.branch_name)
+          ? selectedCard.branch_name
+          : selectedCard.branch_name
+            ? [selectedCard.branch_name]
             : [],
         device_id: selectedCard.device_id || ""
       });
@@ -94,18 +95,18 @@ function AddEmployee() {
   const addBranchesForEmployee = async (deviceId, branchNames) => {
     try {
       // برای هر شعبه انتخاب شده، یک رکورد جداگانه ثبت کن
-      const promises = branchNames.map(branchName => 
+      const promises = branchNames.map(branchName =>
         createWorkerBranch({
           device_id: deviceId,
           branch_name: branchName,
         })
       );
-      
+
       const results = await Promise.all(promises);
-      
+
       // بررسی موفقیت همه درخواست‌ها
       const allSuccessful = results.every(res => res.status === 200);
-      
+
       if (allSuccessful) {
         successToast(`شعبه‌ها با موفقیت بروزرسانی شدند (${branchNames.length} شعبه)`);
         return true;
@@ -141,23 +142,23 @@ function AddEmployee() {
       };
 
       const res = await addemployeeService(employeeData);
-      
+
       if (res.status === 201) {
         successToast("کارمند با موفقیت اضافه شد");
 
         // سپس تمام شعبه‌های انتخاب شده را ثبت کن
         const branchSuccess = await addBranchesForEmployee(
-          formData.device_id, 
+          formData.device_id,
           formData.branch_name
         );
 
         if (branchSuccess) {
           // فرم را پاک کن
-          setFormData({ 
-            first_name: "", 
-            last_name: "", 
+          setFormData({
+            first_name: "",
+            last_name: "",
             branch_name: [], // آرایه خالی
-            device_id: "" 
+            device_id: ""
           });
           setSelectedImage(null);
           setSelectedId(null);
@@ -171,17 +172,18 @@ function AddEmployee() {
   };
 
   return (
-    <div className="p-5 bg-white dark:border dark:border-lightgray mb-10 dark:bg-lightgray mt-10 md:mb-5 md:-mx-4 w-full h-full items-center rounded-3xl">
+    <div className="p-5 bg-white border-4 shadow-lg dark:border  mb-10 dark:bg-lightgray mt-24 md:mb-5 md:-mx-4 w-full items-center rounded-3xl">
       <div dir="rtl">
         <div className="mb-5 md:flex items-center md:justify-between border-b-2 dark:border-b-darkgray border-blue">
-          <div className="flex text-blue items-center dark:text-dark_background gap-4 text-blue-700">
+          <div className="flex text-blue items-center dark:text-white gap-4 text-blue-700">
             <LuSquareUser size={40} />
-            <p className="text-2xl dark:text-dark_background">افزودن کارمندان</p>
+            <p className="text-2xl dark:text-white">افزودن کارمندان</p>
           </div>
           <div className="md:flex text-blue-700 md:mt-5 -mt-10  gap-5 items-center mx-10">
-            <span className="flex mb-5 gap-2 items-center dark:text-dark_background text-blue justify-end">
+            <span className="flex mb-5 gap-2 items-center dark:text-white text-blue justify-end">
               <FaRegCalendarDays />
               {getTodayJalali()}
+              <ToggleButton />
             </span>
           </div>
         </div>

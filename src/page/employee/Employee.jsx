@@ -22,6 +22,7 @@ import { GetBranchList } from '../../services/Filterservice'
 import { getWorkerBranchSearch } from "../../services/workerbranch";
 import {editEmployeeService} from "../../services/employeeservices"
 import { frameData } from "framer-motion";
+import ToggleButton from "../../components/shared/ToggleButton";
 
 function EmployeeSkeletonCard() {
   return (
@@ -274,23 +275,24 @@ function Employee() {
 
 
   return (
-    <div className="p-5 bg-white dark:bg-lightgray mt-8 md:mb-5 mb-32 md:-mx-4 w-full h-full items-center rounded-3xl" dir="rtl">
-      <div className="py-5 w-full text-blue md:flex items-center md:justify-between border-b-2 dark:border-dark_background mb-10 border-blue">
-        <div className="flex mx-10 items-center dark:text-dark_background text-blue">
+    <div className="p-5 bg-white border-4 shadow-lg dark:bg-lightgray mt-8 md:mb-5 mb-32 md:-mx-4 w-full h-full items-center rounded-3xl" dir="rtl">
+      <div className="py-5 w-full text-blue md:flex  items-center md:justify-between border-b-2 dark:border-dark_background mb-10 border-toblue">
+        <div className="flex mx-10 items-center dark:text-white text-blue">
           <LuUserSearch size={40} />
-          <p className="text-2xl dark:text-dark_background">کارمندان</p>
+          <p className="text-2xl dark:text-white">کارمندان</p>
         </div>
         <div className="md:flex md:flex-row-reverse text-blue gap-5 items-center p-3 ">
-          <span className="flex dark:text-dark_background justify-end md:mt-5 -mt-12 pb-5 items-center gap-2 text-blue">
+          <span className="flex dark:text-white justify-end md:mt-5 -mt-12 pb-5 items-center gap-2">
             <MdOutlineCalendarMonth />
             {getTodayJalali()}
+            <ToggleButton />
           </span>
           <FilterBranch selectBranch={setBranch} className=""/>
         </div>
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-10">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 gap-4 px-10">
           {Array.from({ length: 6 }).map((_, index) => (
             <EmployeeSkeletonCard key={index} />
           ))}
@@ -302,11 +304,11 @@ function Employee() {
           onDelete={handleDeleteClick}
         />
       ) : (
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="md:w-[30%] bg-white shadow-md rounded-2xl p-4 dark:bg-gradient-to-b dark:from-to_dark_background dark:to-dark_background">
+        <div className="flex flex-col md:flex-row gap-4 ">
+          <div className="md:w-[30%] bg-white shadow-md  rounded-2xl p-4 dark:bg-gradient-to-b dark:from-to_dark_background dark:to-dark_background">
             <div className="flex justify-center dark:text-dark_background text-blue items-center mb-4 border-b dark:border-b-dark_background pb-2 border-blue">
               <FaUserCircle size={30} />
-              <p className="text-lg text-blue mr-2 dark:text-dark_background">دیگر پیشنهادی</p>
+              <p className="text-lg text-blue mr-2 dark:text-dark_background"> پیشنهادات دیگر</p>
             </div>
             <div className="flex gap-3 overflow-x-auto md:flex-col md:overflow-y-auto md:max-h-[500px] hide-scrollbar">
               {otherCards.slice(0, 10).map((card) => (

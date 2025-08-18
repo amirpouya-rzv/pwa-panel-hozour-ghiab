@@ -1,25 +1,31 @@
 import React, { useState } from 'react';
 import SideBarItem from './SideBarItem';
 import { LuSquareUser, LuUserSearch } from 'react-icons/lu';
-import { IoStatsChartSharp } from 'react-icons/io5';
-import { BiExit } from 'react-icons/bi';
+import { IoStatsChartSharp, IoClose } from 'react-icons/io5';
+import { BiExit, BiMenu } from 'react-icons/bi';
 import { MdOutlineAddLocationAlt } from 'react-icons/md';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import ConfirmModal from '../../components/ConfirmModal';
+import ToggleButton from '../../components/shared/ToggleButton';
 
 function Sidebar() {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
 
     const handleLogoutClick = (e) => {
         e.preventDefault();
         setShowModal(true);
     };
 
+    const handleOpenMenu = () => {
+        setOpenMenu(!openMenu);
+    };
+
     const handleConfirmExit = () => {
         setShowModal(false);
         navigate("/auth/login");
-        localStorage.removeItem("authTokens")
+        localStorage.removeItem("authTokens");
     };
 
     const handleCancelExit = () => {
@@ -27,32 +33,64 @@ function Sidebar() {
     };
 
     return (
-        <section
-            id="sidebar"
-            className="fixed right-0 opacity-90 md:top-1 h-36 w-screen md:w-28 md:h-screen bg-gradient-to-l from-toblue to-blue 
-                md:rounded-tl-[88.5px] dark:bg-gradient-to-l dark:from-dark_background dark:bg-[#3E3E3E]/80 dark:text-[#fdf0d5]/20 
-      md:rounded-bl-[88.5px] bottom-0 mt-10 md:mt-0"
-        >
-            <ul className="md:space-y-8 md:mt-10 md:mx-5 flex md:flex-col justify-around">
-                <SideBarItem to="/" title="کارمندان" Icon={<LuUserSearch size={40} />} />
-                <SideBarItem to="/addemployee" title="افزودن" Icon={<LuSquareUser size={40} />} />
-                <SideBarItem to="/reports" title="گزارشات" Icon={<IoStatsChartSharp size={40} />} />
-                <SideBarItem to="/branch" title="شعبه" Icon={<MdOutlineAddLocationAlt size={40} />} />
-                <div
-                    onClick={handleLogoutClick}>
-                    <SideBarItem title="خروج" Icon={<BiExit size={40} />} />
-                </div>
-            </ul>
+      <section
+    id="sidebar"
+    className={`fixed inset-y-0 right-0 border-l-2 border-toblue shadow-lg bg-blue dark:bg-dark_background 
+        transition-all 
+        ${openMenu ? "w-96 md:w-64" : "w-0 md:w-52"}`}
+>
+    {/* Overlay موبایل */}
+    {openMenu && (
+        <div
+            className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden"
+            onClick={handleOpenMenu} 
+        ></div>
+    )}
 
-            <ConfirmModal
-                isOpen={showModal}
-                onConfirm={handleConfirmExit}
-                onCancel={handleCancelExit}
-                title="آیا از خروج مطمئن هستید؟"
-                confirmText="خروج"
-                cancelText="انصراف"
-            />
-        </section>
+    <div className="flex justify-end pt-6 px-11 md:hidden z-20 relative">
+        {openMenu ? (
+            <button className='text-white -mx-5' onClick={handleOpenMenu}>
+                <IoClose size={25} />
+            </button>
+        ) : (
+            <button onClick={handleOpenMenu}>
+                <BiMenu size={25} />
+            </button>
+        )}
+    </div>
+
+    <ul onClick={handleOpenMenu} className={`${openMenu ? "block " : "hidden"} md:block mt-10 space-y-12 z-20 relative`}>
+        <Link to={"/"}>
+            <img src='/96_x_96-removebg-preview.png' className='md:mx-8 mx-32 rounded-xl backdrop-blur-md cursor-pointer'/>
+        </Link>
+
+        <li>
+            <SideBarItem to="/" title="کارمندان" Icon={<LuUserSearch size={25} />} />
+        </li>
+        <li>
+            <SideBarItem to="/addemployee" title="افزودن" Icon={<LuSquareUser size={25} />} />
+        </li>
+        <li>
+            <SideBarItem to="/reports" title="گزارشات" Icon={<IoStatsChartSharp size={25} />} />
+        </li>
+        <li>
+            <SideBarItem to="/branch" title="شعبه" Icon={<MdOutlineAddLocationAlt size={25} />} />
+        </li>
+        <li onClick={handleLogoutClick}>
+            <SideBarItem title="خروج" Icon={<BiExit size={25} />} />
+        </li>
+    </ul>
+
+    <ConfirmModal
+        isOpen={showModal}
+        onConfirm={handleConfirmExit}
+        onCancel={handleCancelExit}
+        title="آیا از خروج مطمئن هستید؟"
+        confirmText="خروج"
+        cancelText="انصراف"
+    />
+</section>
+
     );
 }
 

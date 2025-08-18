@@ -8,13 +8,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        gray: "#898CBB",
-        blue: "#175DB8",
-        toblue: "#1621E6",
+        light_background: "#fdf0d5",
+        blue: "#003049",
+        toblue: "#669bbc",
+        lightred: "#c1121f",
+        darkred: "#780000",
         darkgray: "#3E3E3E",
-        lightgray: "#EDEDEE",
+        lightgray: "#1e1b24",
         dark_kightgray: "#D4D4D4",
-        dark_background: "#1A1A2E",
+        dark_background: "#19181f",
         to_dark_background: "#5F6A79"
       }
     },
