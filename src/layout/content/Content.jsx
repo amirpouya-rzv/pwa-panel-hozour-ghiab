@@ -8,8 +8,8 @@ import ToggleButton from '../../components/shared/ToggleButton'
 
 function Content() {
     return (
-        <section id="content" className=" -mt-6 inset-y-0 w-full h-screen bg-white dark:bg-gradient-to-b dark:from-dark_background dark:to-to_dark_background">
-            <div className='absolute w-full md:pr-60  '>
+        <section id="content" className=" inset-y-0 ">
+            <div className='absolute w-full md:pr-60 min-h-full bg-white dark:bg-gradient-to-b dark:from-dark_background dark:to-to_dark_background '>
 
               
                 <Routes>

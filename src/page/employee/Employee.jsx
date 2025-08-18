@@ -275,8 +275,8 @@ function Employee() {
 
 
   return (
-    <div className="p-5 bg-white border-4 shadow-lg dark:bg-lightgray mt-8 md:mb-5 mb-32 md:-mx-4 w-full h-full items-center rounded-3xl" dir="rtl">
-      <div className="py-5 w-full text-blue md:flex  items-center md:justify-between border-b-2 dark:border-dark_background mb-10 border-toblue">
+    <div className="p-5 bg-white border-2 shadow-lg dark:bg-lightgray mt-8 md:mb-5 mb-32 md:-mx-4 w-full h-full items-center rounded-3xl" dir="rtl">
+      <div className="py-5 w-full text-blue md:flex  items-center md:justify-between border-b-2  mb-10 dark:border-white border-toblue">
         <div className="flex mx-10 items-center dark:text-white text-blue">
           <LuUserSearch size={40} />
           <p className="text-2xl dark:text-white">کارمندان</p>

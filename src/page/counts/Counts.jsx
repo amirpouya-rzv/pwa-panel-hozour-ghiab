@@ -4,7 +4,7 @@ import { FaStore } from 'react-icons/fa6';
 import { CountServiceuser } from '../../services/countservices';
 
 const StatCard = ({ icon, label, value, borderColor, borderPosition = 'right' }) => (
-  <div className="relative mb-5 mt-5 flex flex-col items-center justify-center w-36 h-24 rounded-xl border border-blue dark:border-darkgray dark:text-darkgray text-blue shadow-md">
+  <div className="relative mb-5 mt-5 flex flex-col items-center justify-center w-36 h-24 rounded-xl border border-blue dark:border-white dark:text-white text-blue shadow-md">
     <div
       className={`absolute top-2 bottom-2 w-1 rounded-full ${
         borderPosition === 'right' ? 'right-1' : 'left-1'

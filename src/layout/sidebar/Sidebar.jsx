@@ -37,7 +37,7 @@ function Sidebar() {
     id="sidebar"
     className={`fixed inset-y-0 right-0 border-l-2 border-toblue shadow-lg bg-blue dark:bg-dark_background 
         transition-all 
-        ${openMenu ? "w-96 md:w-64" : "w-0 md:w-52"}`}
+        ${openMenu ? "w-96 md:w-52" : "w-0 md:w-52"}`}
 >
     {/* Overlay موبایل */}
     {openMenu && (
@@ -49,11 +49,11 @@ function Sidebar() {
 
     <div className="flex justify-end pt-6 px-11 md:hidden z-20 relative">
         {openMenu ? (
-            <button className='text-white -mx-5' onClick={handleOpenMenu}>
+            <button className='text-white dark:text-white -mx-5' onClick={handleOpenMenu}>
                 <IoClose size={25} />
             </button>
         ) : (
-            <button onClick={handleOpenMenu}>
+            <button className='dark:text-white' onClick={handleOpenMenu}>
                 <BiMenu size={25} />
             </button>
         )}

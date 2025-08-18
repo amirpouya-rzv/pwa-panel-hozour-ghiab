@@ -172,7 +172,7 @@ function AddEmployee() {
   };
 
   return (
-    <div className="p-5 bg-white border-4 shadow-lg dark:border  mb-10 dark:bg-lightgray mt-24 md:mb-5 md:-mx-4 w-full items-center rounded-3xl">
+    <div className="p-5 bg-white border-4 shadow-lg dark:border-2  mb-10 dark:bg-lightgray mt-24 md:mb-5 md:-mx-4 w-full items-center rounded-3xl">
       <div dir="rtl">
         <div className="mb-5 md:flex items-center md:justify-between border-b-2 dark:border-b-darkgray border-blue">
           <div className="flex text-blue items-center dark:text-white gap-4 text-blue-700">

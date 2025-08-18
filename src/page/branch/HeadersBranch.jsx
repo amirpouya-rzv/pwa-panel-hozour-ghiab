@@ -5,13 +5,13 @@ import ToggleButton from '../../components/shared/ToggleButton'
 
 function HeadersBranch() {
     return (
-        <div className="py-5 md:flex items-center mt-10 justify-between border-b-2 dark:border-b dark:border-darkgray mb-10 border-toblue mx-10">
-            <div className="flex dark:text-darkgray items-center gap-4 text-blue ">
+        <div className="py-5 md:flex items-center mt-10 justify-between border-b-2 dark:border-b dark:border-white mb-10 border-toblue mx-10">
+            <div className="flex dark:text-white items-center gap-4 text-blue ">
                 <MdOutlineAddLocationAlt size={40}/>
                 <p className="text-2xl">افزودن شعبه</p>
             </div>
-            <div className="flex justify-end md:-mt-0 -mt-9 text-blue  dark:text-darkgray items-center">
-                <span className='flex items-center gap-1 dark:text-darkgray'>
+            <div className="flex justify-end md:-mt-0 -mt-9 text-blue  dark:text-white items-center">
+                <span className='flex items-center gap-1 dark:text-white'>
                     <MdOutlineCalendarMonth />
                     {getTodayJalali()}
                     <ToggleButton/>

@@ -20,7 +20,7 @@ function AppInput({
             {title && (
                 <label
                     htmlFor={id}
-                    className={`text-gray-700 dark:text-lightgray font-medium text-lg ${horizontal ? 'whitespace-nowrap min-w-2 text-right' : 'mb-1'}`}
+                    className={`text-gray-700 dark:text-white font-medium text-lg ${horizontal ? 'whitespace-nowrap min-w-2 text-right' : 'mb-1'}`}
                 >
                     {title}
                 </label>
@@ -38,7 +38,7 @@ function AppInput({
                     value={value ?? ''}
                     onChange={onChange}
                     placeholder={placeholder}
-                    className={`w-full py-3  pr-4 ${icon ? 'pl-10' : 'pl-4'} rounded-xl border-2 ${error ? 'border-red-500' : 'border-blue dark:border dark:border-white'
+                    className={`w-full py-3  pr-4 ${icon ? 'pl-10' : 'pl-4'} rounded-xl border-2 ${error ? 'border-red-500' : 'dark:border-stone-300 border-stone-300 dark:border dark:border-white'
                         } focus:ring-1 focus:outline-none focus:ring-blue dark:focus:ring-dark_background ${className}`}
                 />
 

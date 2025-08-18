@@ -43,17 +43,17 @@ const SelcetMenu = ({selectFiter}) => {
     selectFiter(item)
   },[date,time,branch])
   return (
-    <div className='flex w-full flex-col md:flex-row gap-3 md:gap-9 items-center justify-between p-4 border-b-2 border-toblue dark:border-darkgray mb-100 text-[12px]'>
-      <span className='flex items-center dark:text-darkgray gap-2 text-blue'>
+    <div className='flex w-full flex-col md:flex-row gap-3 md:gap-9 items-center justify-between p-4 border-b-2 border-toblue dark:border-white  mb-100 text-[12px]'>
+      <span className='flex items-center dark:text-white gap-2 text-blue'>
         <IoStatsChartSharp size={28} />
-        <p className='text-[25px] dark:text-darkgray'>گزارشات</p>
+        <p className='text-[25px] dark:text-white'>گزارشات</p>
       </span>
 
       <FilterDate selectDate={setDate} />
       <FilterBranch selectBranch={setBranch} />
       <FilterTime selectTime={setTime} />
 
-      <span className='flex items-center dark:text-darkgray gap-2'>
+      <span className='flex items-center dark:text-white gap-2'>
         <MdOutlineCalendarMonth />
         {getTodayJalali()}
         <ToggleButton/>

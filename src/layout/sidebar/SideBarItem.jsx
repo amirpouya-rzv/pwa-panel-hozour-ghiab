@@ -16,7 +16,7 @@ const SideBarItem = ({ Icon, title, to, onClick }) => {
                     to={to}
                     className={({ isActive }) =>
                         `grid gap-3 items-center justify-center text-center transition-all rounded-2xl hover:bg-white/20  hover:py-1 ${
-                            isActive ? "text-white bg-white/20 border-y-2 border-toblue dark:text-dark_background" : ""
+                            isActive ? "text-white bg-white/20 border-y-2 border-toblue  dark:text-white" : ""
                         }`
                     }
                 >

@@ -40,8 +40,8 @@ function AddEmployeeForm({
   />
 
   {/* شعبه */}
-  <div className="flex flex-col">
-    <span className="mb-2 text-xl text-gray-700 dark:text-white">
+  <div className="flex flex-col ">
+    <span className="mb-2 text-xl  text-gray-700 dark:text-white">
       شعبه (می‌توانید چند شعبه انتخاب کنید):
     </span>
     <CustomSelect
@@ -91,11 +91,11 @@ function AddEmployeeForm({
 
   {/* شناسه یکتا */}
   <div className="flex flex-col">
-    <span className="mb-3 text-xl text-gray-700">
+    <span className="mb-3 text-xl dark:text-white text-gray-700">
       شناسه یکتا :
     </span>
     <textarea
-      className="border-2 border-blue dark:border-lightgray  rounded-xl focus:ring-0 focus:outline-none focus:ring-blue"
+      className="border-2 border-stone-300  rounded-xl focus:ring-0 focus:outline-none focus:ring-blue"
       value={formData.device_id || ""}
       onChange={(e) => setFormData({ ...formData, device_id: e.target.value })}
     />

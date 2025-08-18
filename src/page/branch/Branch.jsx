@@ -85,7 +85,7 @@ function Branch() {
 
     return (
         <div className="w-full  md:px-5 mb-52 md:mb-0 pt-10 shadow-xl">
-            <div className="w-full  dark:border dark:border-lightgray mb-10 dark:bg-lightgray border-4 rounded-3xl">
+            <div className="w-full  dark:border-2 pb-10 dark:border-white mb-10 dark:bg-lightgray border-4 rounded-3xl">
                 <HeadersBranch />
 
                 <form

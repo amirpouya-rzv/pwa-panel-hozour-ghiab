@@ -114,7 +114,7 @@ const Reports = () => {
     'flex-1 min-w-0 text-center py-2 dark:border dark:border-darkgray text-blue dark:text-white px-2 bg-[#dcdcdc] dark:bg-darkgray rounded-md font-bold text-[14px]';
 
   return (
-    <div className="relative p-5 md:-mx-4 bg-white border-4 shadow-lg dark:bg-dark_kightgray md:mt-10 mt-5  w-full mb-5  rounded-xl  min-h-screen">
+    <div className="relative p-5 md:-mx-4 bg-white border-2 shadow-lg dark:bg-dark_background md:mt-10 mt-5  w-full mb-5  rounded-xl  min-h-screen">
       <div className="flex justify-end">
         <SelcetMenu selectFiter={serParams} />
       </div>

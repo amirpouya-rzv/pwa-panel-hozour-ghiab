@@ -82,7 +82,7 @@ const CustomSelect = ({ options = [], value = [], onChange }) => {
       {/* Box */}
       <div
         onClick={toggleOpen}
-        className="flex justify-between items-center border-2 border-blue dark:border-darkgray rounded-lg bg-white px-4 py-2.5 cursor-pointer text-base"
+        className="flex justify-between items-center border-2 dark:border-stone-300 border-stone-300 rounded-2xl bg-white px-4 py-3 cursor-pointer text-base"
       >
         <span className="text-gray-700">{displayText}</span>
         {open ? <FiChevronUp size={20} /> : <FiChevronDown size={20} />}
