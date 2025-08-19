@@ -23,6 +23,7 @@ import { getWorkerBranchSearch } from "../../services/workerbranch";
 import {editEmployeeService} from "../../services/employeeservices"
 import { frameData } from "framer-motion";
 import ToggleButton from "../../components/shared/ToggleButton";
+import { BiTrash } from "react-icons/bi";
 
 function EmployeeSkeletonCard() {
   return (
@@ -340,6 +341,7 @@ function Employee() {
         confirmText="حذف"
         cancelText="انصراف"
         onConfirm={confirmDeleteEmployee}
+        icon={<BiTrash size={21}/>}
         onCancel={() => {
           setShowConfirmModal(false);
           setEmployeeToDelete(null);

@@ -1,7 +1,7 @@
-import AuthLayout from "./layout/auth/AuthLayout.jsx";
-import AllPage from "./layout/AllPage.jsx";
+import AuthLayout from "./layout/auth/AuthLayout";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import AllPage from "./layout/AllPage";
 
 export default function App() {
   const { darkmode } = useSelector(state => state.darkmode);

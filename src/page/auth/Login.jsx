@@ -5,6 +5,7 @@ import { errorToast, successToast } from '../../utils/toastutils';
 import { ToastContainer } from 'react-toastify';
 import { CiAirportSign1 } from 'react-icons/ci';
 import { CgSpinner } from 'react-icons/cg';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
   const navigate = useNavigate();
@@ -38,138 +39,83 @@ function Login() {
       const res = await LoginServiceuser(data);
       if (res.status === 200) {
         localStorage.setItem('authTokens', JSON.stringify(res.data));
-        navigate('/'); // ✅ ریدایرکت به صفحه اصلی
+        navigate('/');
         successToast("ورود با موفقیت انجام شد");
       } else {
         errorToast(res.data.message || 'اطلاعات وارد شده اشتباه است');
       }
     } catch (err) {
       console.error(err);
+      errorToast('خطا در ورود به سیستم');
     } finally {
       setLoading(false);
     }
   };
 
-
   return (
-    <div className="min-h-screen w-full bg-gradient-to-t from-[#EDEDED] to-[#8184B8] relative">
+    <div className="min-h-screen w-full bg-gradient-to-t from-[#EDEDED] to-[#8184B8] flex items-center justify-center relative">
       <ToastContainer />
 
-      {/* فرم موبایل */}
-      <div className="md:hidden flex items-center justify-center min-h-screen px-4">
-        <div className="w-full max-w-md rounded-2xl px-6 py-10 shadow-xl bg-[#6994CC9E] relative">
-          <div className="absolute -top-14 left-1/2 -translate-x-1/2 w-28 h-28 bg-[#6994CC9E] border shadow-lg rounded-full flex items-center justify-center">
-            <CiAirportSign1 size={60} />
-          </div>
-
-          <form onSubmit={handleSubmit} className="pt-16 space-y-6">
-            <div>
-              <label className="block text-right text-black text-lg mb-1">نام کاربری:</label>
-              <input
-                type="text"
-                className={`w-full px-4 py-2 rounded-xl text-right outline-none border transition-all
-                ${errors.username ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-blue`}
-                value={data.username}
-                onChange={(e) => setData({ ...data, username: e.target.value })}
-              />
-              {errors.username && <p className="text-red-500 text-sm mt-1 text-right">{errors.username}</p>}
-            </div>
-
-            <div>
-              <label className="block text-right text-black text-lg mb-1">رمز عبور:</label>
-              <input
-                type="password"
-                className={`w-full px-4 py-2 rounded-xl text-right outline-none border transition-all
-                ${errors.password ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-blue`}
-                value={data.password}
-                onChange={(e) => setData({ ...data, password: e.target.value })}
-              />
-              {errors.password && <p className="text-red-500 text-sm mt-1 text-right">{errors.password}</p>}
-            </div>
-
-            <div className="flex items-center justify-end space-x-2">
-              <label className="text-sm text-black">مرا به خاطر بسپار</label>
-              <input type="checkbox" />
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full text-center py-3 rounded-xl bg-blue hover:bg-toblue text-white text-lg transition-all duration-200"
-            > 
-            {loading ? <div className='flex justify-center text-center items-center gap-3'>
-              در حال ورود...
-              <CgSpinner size={20} className='animate-spin' />
-            </div> :
-              <div className='text-center'>
-                ورود
-              </div>}
-            </button>
-          </form>
+      {/* فرم ورود */}
+      <div className="w-full max-w-md rounded-2xl px-6 py-12 shadow-xl bg-[#6994CC9E] relative">
+        {/* لوگو */}
+        <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue border shadow-lg rounded-full flex items-center justify-center">
+          <img src='/96_x_96-removebg-preview.png' />
         </div>
-      </div>
 
-      {/* فرم دسکتاپ */}
-      <div className="hidden md:flex items-end justify-center min-h-screen">
-        {/* آبی پررنگ کف صفحه */}
-        <div className="relative w-[1000px] h-[300px] bg-blue rounded-t-3xl flex items-center justify-center overflow-visible">
-
-          {/* آبی کم‌رنگ چسبیده از بیرون بالا */}
-          <div className="absolute bottom-0  bg-[#6994CC9E] h-[500px] w-[500px] rounded-t-3xl p-6 flex flex-col items-center justify-start shadow-xl">
-            {/* لوگو */}
-            <span className="absolute -top-16 w-36 h-36 bg-[#6994CC9E] rounded-full shadow-lg flex items-center justify-center">
-              <CiAirportSign1 size={70} />
-            </span>
-
-            {/* فرم */}
-            <form onSubmit={handleSubmit} className="mt-40 w-[420px] space-y-6">
-              <div>
-                <label className="block text-right text-black text-xl mb-2">نام کاربری:</label>
-                <input
-                  type="text"
-                  className={`w-full px-4 py-3 rounded-xl text-right outline-none border transition-all
+        <form onSubmit={handleSubmit} className="pt-20 space-y-6">
+          {/* نام کاربری */}
+          <div>
+            <label className="block text-right text-black text-lg mb-1">نام کاربری:</label>
+            <input
+              type="text"
+              className={`w-full px-4 py-2 rounded-xl text-right outline-none border transition-all
               ${errors.username ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-blue`}
-                  value={data.username}
-                  onChange={(e) => setData({ ...data, username: e.target.value })}
-                />
-                {errors.username && <p className="text-red-500 text-sm mt-1 text-right">{errors.username}</p>}
-              </div>
-
-              <div>
-                <label className="block text-right mt-10 text-black text-xl mb-2">رمز عبور:</label>
-                <input
-                  type="password"
-                  className={`w-full px-4 py-3  rounded-xl text-right outline-none border transition-all
-              ${errors.password ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-blue`}
-                  value={data.password}
-                  onChange={(e) => setData({ ...data, password: e.target.value })}
-                />
-                {errors.password && <p className="text-red-500 text-sm mt-1 text-right">{errors.password}</p>}
-              </div>
-
-              <div className="flex items-center gap-3 ">
-                <input type="checkbox" />
-                <label className="text-right text-black text-sm">رمز عبور را به خاطر بسپار</label>
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full text-center disabled:cursor-not-allowed py-3 mt-10 rounded-xl bg-blue hover:bg-toblue text-white text-lg transition-all"
-              >
-                {loading ? <div className='flex justify-center text-center items-center gap-3'>
-                  در حال ورود...
-                  <CgSpinner size={20} className='animate-spin' />
-                </div> :
-                  <div className='text-center'>
-                    ورود
-                  </div>}
-              </button>
-            </form>
+              value={data.username}
+              onChange={(e) => setData({ ...data, username: e.target.value })}
+            />
+            {errors.username && <p className="text-red-500 text-sm mt-1 text-right">{errors.username}</p>}
           </div>
-        </div>
-      </div>
 
+          {/* رمز عبور */}
+          <div>
+            <label className="block text-right text-black text-lg mb-1">رمز عبور:</label>
+            <input
+              type="password"
+              className={`w-full px-4 py-2 rounded-xl text-right outline-none border transition-all
+              ${errors.password ? 'border-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-blue`}
+              value={data.password}
+              onChange={(e) => setData({ ...data, password: e.target.value })}
+            />
+            {errors.password && <p className="text-red-500 text-sm mt-1 text-right">{errors.password}</p>}
+          </div>
+
+          {/* مرا به خاطر بسپار */}
+          <div className="flex items-center justify-end gap-2">
+            <label className="text-sm text-black">مرا به خاطر بسپار</label>
+            <input type="checkbox" />
+          </div>
+          <div className='flex  flex-col'>
+            <span>نام کاربری : amirpouya</span>
+            <span>رمز عبور : 123456</span>
+          </div>
+          {/* دکمه ورود */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full text-center py-3 rounded-xl bg-blue hover:bg-toblue text-white text-lg transition-all duration-200 disabled:cursor-not-allowed"
+          >
+            {loading ? (
+              <div className='flex justify-center items-center gap-3'>
+                در حال ورود...
+                <CgSpinner size={20} className='animate-spin' />
+              </div>
+            ) : (
+              <div className='text-center'>ورود</div>
+            )}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

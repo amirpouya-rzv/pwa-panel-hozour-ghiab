@@ -28,6 +28,7 @@ const SideBarItem = ({ Icon, title, to, onClick }) => {
                     className="grid gap-3 hover:py-1 items-center justify-center text-center transition-all px-2 rounded-2xl hover:bg-white/20"
                 >
                     {content}
+                    
                 </button>
             )}
         </li>

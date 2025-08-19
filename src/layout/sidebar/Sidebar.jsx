@@ -88,6 +88,7 @@ function Sidebar() {
         title="آیا از خروج مطمئن هستید؟"
         confirmText="خروج"
         cancelText="انصراف"
+        icon={<BiExit size={22} />}
     />
 </section>
 
